@@ -26,8 +26,8 @@
 
     <body>
         @include('frontend.includes.yandexmetrika')
-        <div id="wrapper">
-            <div id="header">
+        <div class="wrapper">
+            <div class="header">
                 В каждый дом. Номер {{ $viewData['nomgod'] }} ({{ $viewData['nomgaz'] }}).
                 Дата выхода: {{ $viewData['datavyh'] }}. {{ $section }}.
             </div>

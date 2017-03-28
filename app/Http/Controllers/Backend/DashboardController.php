@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-//use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 //use Illuminate\Http\Response;
 
 use App\Models\Nomer;
@@ -194,6 +194,19 @@ class DashboardController extends Controller
         fclose($handle);
 
         return $request->input('file');
+    }
+
+    public function showSecure() {
+        $adm = DB::table('users')->where('name', 'Administrator')->first();
+        return view('backend.secure', ['admail' => $adm->email]);
+    }
+
+    public function saveSecure(Request $request) {
+        DB::table('users')
+            ->where('name', 'Administrator')
+            ->update(['email' => $request->adminemail, 'password' => bcrypt($request->pass)]);
+
+        return redirect('admin/dashboard');
     }
 
 } // class DashboardController END

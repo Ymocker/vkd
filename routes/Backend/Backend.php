@@ -15,6 +15,7 @@ Route::get('cipher', 'DashboardController@cipher');
 Route::get('about', 'DashboardController@showAbout');
 Route::post('saveabout', 'DashboardController@saveAbout');
 Route::post('savetext', 'DashboardController@saveText');
+Route::post('security', 'DashboardController@saveSecure');
 
 Route::group(['middleware' => 'adminData'], function () {
     Route::get('newnumber', 'NomerController@newNumber')->name('newnumber');
@@ -27,4 +28,5 @@ Route::group(['middleware' => 'adminData'], function () {
     Route::get('rek/{id}/delete/{p}', 'ReklamaController@destroyRek');
     Route::get('addtext', 'DashboardController@showTextForm')->name('showtext');
     Route::get('settings', 'DashboardController@showSettings')->name('settings');
+    Route::get('security', 'DashboardController@showSecure')->name('security');
 });

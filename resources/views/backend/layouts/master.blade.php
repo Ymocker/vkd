@@ -30,19 +30,19 @@
 
     <body>
         <div class="header">Панель управления сайтом «В каждый дом»</div>
-        <div id="wrapper">
+        <div class="wrapper">
 
             <div id="sidemenu">
                 @include('backend.includes.sidebar')
             </div>
-            <div id="cont">
+            <div class="cont">
 
-            <!-- Content Header (Page header) -->
-            <section class="status">
-                <h3 class="box-title">
-                    Редактируемый номер: <b><span id="ed-number">{{ $admData['editNumber'] }}</span></b> (<span id="status-number">{{ $admData['statusNumber'] }}</span>)
-                </h3>
-            </section>
+                <!-- Content Header (Page header) -->
+                <section class="status">
+                    <h3 class="box-title">
+                        Редактируемый номер: <b><span id="ed-number">{{ $admData['editNumber'] }}</span></b> (<span id="status-number">{{ $admData['statusNumber'] }}</span>)
+                    </h3>
+                </section>
 
                 <!-- Main content -->
                 <section class="content">
@@ -51,7 +51,7 @@
             </div>
 
         </div> {{-- end wrapper --}}
-        <div id="footer">«В каждый дом»</div>
+        <div class="footer">«В каждый дом»</div>
 
         <!-- JavaScripts -->
         @yield('before-scripts')

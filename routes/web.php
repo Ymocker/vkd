@@ -36,4 +36,5 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', '
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
      */
     require (__DIR__.'/Backend/Backend.php');
+
 });

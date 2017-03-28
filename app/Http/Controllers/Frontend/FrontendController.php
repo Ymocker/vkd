@@ -82,7 +82,7 @@ class FrontendController extends Controller
                 foreach ($resultColl as $rek) {
                     $results->push(['id' => $rek->id, 'kword' => $rek->kword]);
                 }
-//                Cache::forever('search', $results);
+                Cache::forever('search', $results);
             }
 
             $width = ceil($results->count()/3); // number of keywords in one div of 3

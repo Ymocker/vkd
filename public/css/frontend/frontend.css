@@ -8,7 +8,7 @@ html, body {
 }
 
 h3,h4,h5 {
-    color: #900; 
+    color: #900;
 }
 
 p {
@@ -16,7 +16,7 @@ p {
 }
 
 a {
-  color: #900; 
+  color: #900;
 }
 
 a:hover, a:active, a:focus {
@@ -25,7 +25,7 @@ a:hover, a:active, a:focus {
   color: #ee0000;
 }
 
-#header {
+.header {
     text-align: center;
     color:#900;
 }
@@ -38,7 +38,6 @@ a:hover, a:active, a:focus {
     background-repeat: no-repeat;
     position: relative;
     width: 100%;
-    /*max-width: 1600px;*/
     margin: 0 auto;
     min-height: 350px;
     height: 90vh;
@@ -51,7 +50,7 @@ a:hover, a:active, a:focus {
     text-align: center;
 }
 .mainMenu ul {
-  list-style: none; 
+  list-style: none;
   margin: 0 auto;
   padding: 7px 0 7px 0;
 }
@@ -72,6 +71,8 @@ a:hover, a:active, a:focus {
 }
 .mainMenu li:last-child a { border-right: none; }
 .mainMenu a:hover {background: #BBB;}
+
+.dropdown-menu>li>a:hover { background-color: #f5eabf; }
 
 #bottomMenu {
     position: absolute;
@@ -102,24 +103,21 @@ a:hover, a:active, a:focus {
     color: #990000;
 }
 
-#act {
+.act {
     min-width: 300px;
-    /*height: 210px;*/
     padding: 20px;
     text-align: center;
     background: rgba(200, 0, 0, 0.5);
     border-radius: 10px;
 }
 
-#rndrek {
+.rndrek {
     min-width: 210px;
-    /*height: 210px;*/
-    /*background: rgba(240, 240, 0, 0.2);*/
     opacity: 0.9;
     text-align: center;
 }
 
-#acttext {
+.acttext {
     color: white;
     opacity: none;
     font-size: 1.7em;
@@ -131,12 +129,12 @@ a:hover, a:active, a:focus {
 }
 
 #informer {
-    text-align: left; 
+    text-align: left;
     padding-right: 0;
     color: #990000;
 }
 
-#wrapper {
+.wrapper {
     min-height: 100%;
     margin: 0 auto -18px; /* negative bottom indent equal footer height */
     padding: 0;
@@ -147,8 +145,8 @@ a:hover, a:active, a:focus {
     /*clear: both;*/
 }
 
-#footer {
-    height:18px; 
+.footer {
+    height:18px;
     /*margin-top: -18px;*/
     background:#550000;
     font-size:12px;
@@ -171,7 +169,7 @@ a:hover, a:active, a:focus {
     text-align: center;
     /*background-color: #30bbbb;*/
     float: left;
-    
+
 }
 .thmb-img {
     width: 200px;
@@ -220,7 +218,7 @@ a:hover, a:active, a:focus {
     color:#FFFF66;
     background-color:#f0ebcc;
     padding-top:1em;
-    padding-bottom:1em;	
+    padding-bottom:1em;
     border-bottom-style:none;
     text-align: center;
 }

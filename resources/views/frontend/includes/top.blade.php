@@ -13,13 +13,13 @@
         </div>
 
         @if ($actia != '')
-            <div id="act" class="col-lg-3 col-md-4 col-sm-6">
-                <div id="acttext">{{ $actia }}</div>
+            <div class="col-lg-3 col-md-4 col-sm-6 act">
+                <div class="acttext">{{ $actia }}</div>
             </div>
 
-            <div id="rndrek" class="col-lg-3 col-md-3 hidden-xs hidden-sm">
+            <div class="col-lg-3 col-md-3 hidden-xs hidden-sm rndrek">
         @else
-            <div id="rndrek" class="col-lg-3 col-sm-6 hidden-xs">
+            <div class="col-lg-3 col-sm-6 hidden-xs rndrek">
         @endif
             <a href="/ads/{{ $randRek->id }}" target="_blank">
                 <div style="width:{{ $wd+10 }}px; height:{{ $wd+10 }}px">
