@@ -27,8 +27,8 @@
 
     <body>
         @include('frontend.includes.yandexmetrika')
-        <div id="wrapper">
-            <div class="col-xs-12" id="header">
+        <div class="wrapper">
+            <div class="col-xs-12 header">
                 <p>Газета «В каждый дом» (г. Витебск)<p>
             </div>
 
@@ -52,6 +52,6 @@
         @yield('before-scripts')
 {{--        {!! Html::script(elixir('js/frontend.js')) !!}  --}}
         @yield('after-scripts')
-        
+
     </body>
 </html>

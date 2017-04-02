@@ -27,8 +27,8 @@
 
     <body>
         @include('frontend.includes.yandexmetrika')
-        <div id="wrapper">
-            <div class="col-xs-12" id="header">
+        <div class="wrapper">
+            <div class="col-xs-12 header">
                 <p>Бесплатная рекламная газета «В каждый дом»<p>
             </div>
 
