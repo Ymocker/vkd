@@ -40,6 +40,8 @@
                 @yield('content')
             </div><!-- container -->
             <br />
+            <a href="#" class="scrollup">Наверх</a>
+
             <div class="push"></div>
         </div><!-- wrapper -->
 

@@ -270,3 +270,15 @@ a:hover, a:active, a:focus {
 .bluetext a {
     color: #00c;
 }
+
+.scrollup {
+    width:40px;
+    height:40px;
+    opacity:0.3;
+    position:fixed;
+    bottom:50px;
+    right:100px;
+    display:none;
+    text-indent:-9999px;
+    background: url('/siteimg/icon_top.png') no-repeat;
+}
