@@ -6,13 +6,10 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-//use Illuminate\Support\Facades\DB;
-//use Illuminate\Http\Response;
 
 use App\Models\Nomer;
 use App\Models\Settings;
 use App\Models\Reklama;
-//use App\Models\Kword;
 
 use Cache;
 

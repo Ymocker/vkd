@@ -54,7 +54,7 @@ class Reklama extends Model
      * Makes 92 from 2, 91 from 1 etc.
      */
     public function reklamaToArch() {
-        $this->nomer_id = Nomer::orderBy('id', 'desc')->first()->id;
+        $this->nomer_id = Nomer::orderBy('nomgaz', 'desc')->first()->id;
         $this->polosa = '9' . $this->polosa;
         $this->save();
     }

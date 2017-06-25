@@ -105,7 +105,7 @@
         </div>
         <div class="form-group form-group-lg">
             <div class="col-sm-8">
-                {!! Form::label('ooo', 'Данные рекламодателя (если нужно)') !!}
+                {!! Form::label('ooo', 'Название документа с расширением. Например: statia.pdf') !!}
                 {!! Form::input('text', 'ooo', '', ['class' => 'form-control']) !!}
             </div>
         </div>

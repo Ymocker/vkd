@@ -40,7 +40,7 @@ class Nomer extends Model
             $this->datavyh = '';
             $this->current = 0;
         } else {
-            $nom = self::orderBy('id', 'desc')->first();
+            $nom = self::orderBy('nomgaz', 'desc')->first();
             $this->current = $nom->nomgaz;
             $this->nomgaz = ++$nom->nomgaz;
             $this->nomgod = ++$nom->nomgod;
@@ -120,7 +120,7 @@ class Nomer extends Model
      * unused images from /img directory.
      */
     public static function delOldestNumber() {
-        $delNumId = self::orderBy('id')->first()->id; // oldest Nomer id
+        $delNumId = self::orderBy('nomgaz')->first()->id; // oldest Nomer id
         $delReklamaPic = Reklama::where('nomer_id', $delNumId)->pluck('rekname')->all(); // array of reknames of deleted reklamas
         //$delReklamaPic = DB::select("SELECT rekname FROM reklama WHERE nomer_id = ?", [$delNumId]); // 3 times faster than ORM
 
@@ -154,7 +154,7 @@ class Nomer extends Model
      * @return array
      */
     public static function archNumbers () {
-        $results = self::orderBy('id', 'desc')->get();
+        $results = self::orderBy('nomgaz', 'desc')->get();
         $numbers = array(); //array of numbers (1028,1027,1026,1025)
         foreach ($results as $r)
         {
