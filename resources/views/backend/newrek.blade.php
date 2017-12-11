@@ -14,24 +14,24 @@
                 onSubmit: function(file, ext){
                     if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){
                     // extension is not allowed
-                        button.text('Форматы JPG, PNG или GIF');
+                        button.text("{{ trans('bnewrek.ext') }}");
                         return false;
                     }
-                    button.text("Загрузка");
+                    button.text("{{ trans('bnewrek.download') }}");
                     this.disable();
 
                     var text = button.text();
                     if(text.length < 11){
                         button.text(text + ".");
                     }else{
-                        button.text("Загрузка");
+                        button.text("{{ trans('bnewrek.download') }}");
                     }
                 },
                 onComplete: function(file, response){
                     if(response==="error"){
-                        $("#fileUpload").html("Файл не загружен");
+                        $("#fileUpload").html("{{ trans('bnewrek.err') }}");
                     } else {
-                        button.text("Заменить");
+                        button.text("{{ trans('bnewrek.change') }}");
                         var fileInfo = JSON.parse(response);
 
                         $("#fileImg").html('<img src="/img/tmp/'+'work.'+fileInfo.ext+'?'+Math.random()+'" alt=""/><br />');
@@ -57,10 +57,10 @@
 
 @section('content')
 
-    <h3 class="box-title">Добавить новый рекламный блок.</h3>
+    <h3 class="box-title">{{ trans('bnewrek.addnew') }}.</h3>
 
     <div class="form-group form-group-lg">
-        <div id="butUpload" class="btn btn-primary">Выбрать файл</div>
+        <div id="butUpload" class="btn btn-primary">{{ trans('bnewrek.selectfile') }}</div>
         <div id="fileImg"></div>
         <div id="fileInfo"></div>
     </div>
@@ -68,54 +68,54 @@
     {!! Form::open(['url' => 'admin/add', 'class' => 'form-horizontal', 'role' => 'form']) !!}
         <div class="form-group form-group-lg">
             <div class="col-sm-2">
-                {!! Form::label('razmer', 'Размер изображения') !!}
-                {!! Form::select('razmer', ['800' => '800', '1000' => '1000', '1200' => '1200', '0' => 'Другой размер'], null, ['class' => 'form-control']) !!}
+                {!! Form::label('razmer', trans('bnewrek.imgsize')) !!}
+                {!! Form::select('razmer', ['800' => '800', '1000' => '1000', '1200' => '1200', '0' => trans('bnewrek.othersize')], null, ['class' => 'form-control']) !!}
             </div>
             <div class="col-sm-2">
-                {!! Form::label('mrazmer', 'Другой размер') !!}
+                {!! Form::label('mrazmer', trans('bnewrek.othersize')) !!}
                 {!! Form::input('number', 'mrazmer', 777, ['class' => 'form-control', 'min' => 400, 'max' => 2000]) !!}
             </div>
         </div>
 
         <div class="form-group form-group-lg">
             <div class="col-sm-4">
-                {!! Form::label('name', 'Название') !!}
+                {!! Form::label('name', trans('bnewrek.name')) !!}
                 {!! Form::input('text', 'name', '', ['class' => 'form-control', 'required' => true, 'placeholder' => 'Name of ad']) !!}
             </div>
             <div class="col-sm-4">
-                {!! Form::label('polosa', 'Полоса') !!}
-                {!! Form::select('polosa', ['1' => 'Первая', '2' => 'Внутренние', '4' => 'Четвертая', '0' => 'Только на сайте'], 1, ['class' => 'form-control']) !!}
+                {!! Form::label('polosa', trans('bnewrek.page')) !!}
+                {!! Form::select('polosa', ['1' => trans('bnewrek.page1'), '2' => trans('bnewrek.page23'), '4' => trans('bnewrek.page4'), '0' => trans('bnewrek.page0')], 1, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group form-group-lg">
             <div class="col-sm-4">
-                {!! Form::label('kw', 'Ключевые слова') !!}
+                {!! Form::label('kw', trans('bnewrek.kwords')) !!}
                 {!! Form::select('kw[]', $kw, null, ['class' => 'form-control', 'id' => 'kw', 'multiple' => 'multiple', 'size' => '10', 'onchange' => 'checkKs()']) !!}
             </div>
             <div class="col-sm-4">
-                {!! Form::label('kscontrol', 'Выбранные ключевые слова') !!}
-                {!! Form::textarea('kscontrol', '', ['class' => 'form-control', 'rows' => 10]) !!}
+                {!! Form::label('kscontrol', trans('bnewrek.selkwords')) !!}
+                {!! Form::textarea('kscontrol', '', ['class' => 'form-control', 'readonly' => 'readonly', 'rows' => 10]) !!}
             </div>
         </div>
         <div class="form-group form-group-lg">
             <div class="col-sm-8">
-                {!! Form::label('newks', 'Добавить ключевые слова (если нужно), разделяя символом « ' . $delimiter . ' »') !!}
+                {!! Form::label('newks', trans('bnewrek.addkwords') . ' « ' . $delimiter . ' »') !!}
                 {!! Form::input('text', 'newks', '', ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group form-group-lg">
             <div class="col-sm-8">
-                {!! Form::label('ooo', 'Название документа с расширением. Например: statia.pdf') !!}
+                {!! Form::label('ooo', trans('bnewrek.namedoc')) !!}
                 {!! Form::input('text', 'ooo', '', ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group form-group-lg">
             <div class="col-sm-8">
-                {!! Form::label('web', 'WEB адрес (если нужно)') !!}
+                {!! Form::label('web', trans('bnewrek.web')) !!}
                 {!! Form::input('text', 'web', '', ['class' => 'form-control', 'placeholder' => 'www']) !!}
             </div>
         </div>
 
-        {!! Form::submit('Добавить',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit(trans('bnewrek.add'), ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
 @endsection

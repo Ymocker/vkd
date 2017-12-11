@@ -3,6 +3,8 @@
 * All route names are prefixed with 'admin'
 */
 
+
+
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::post('changenumber', 'DashboardController@changeNumber')->name('changenumber');
 Route::post('newnumber', 'NomerController@storeNumber')->name('storenumber');
@@ -16,6 +18,16 @@ Route::get('about', 'DashboardController@showAbout');
 Route::post('saveabout', 'DashboardController@saveAbout');
 Route::post('savetext', 'DashboardController@saveText');
 Route::post('security', 'DashboardController@saveSecure');
+
+Route::get('setlocale/{locale}', function ($locale) {
+
+    if (in_array($locale, \Config::get('app.locales'))) {   # Проверяем, что у пользователя выбран доступный язык
+    	Session::put('locale', $locale);                    # И устанавливаем его в сессии под именем locale
+    }
+
+    return redirect()->back();                              # Редиректим его обратно на ту же страницу
+
+});
 
 Route::group(['middleware' => 'adminData'], function () {
     Route::get('newnumber', 'NomerController@newNumber')->name('newnumber');

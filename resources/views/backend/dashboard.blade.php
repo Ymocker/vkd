@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('content')
-    <h3 class="box-title">Изменить редактируемый номер.</h3>
+    <h3 class="box-title">{{ trans('bside.change') }}.</h3>
 
     <div class="form-group form-group-lg">
         <div class="col-sm-2">

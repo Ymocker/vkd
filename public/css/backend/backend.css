@@ -26,13 +26,16 @@ html, body {
     font-size: 18px;
 }
 
+.loc a{
+    color: #3db9ec;
+}
+
 #sidemenu {
     width: 250px; /* Menu width */
     float: left;
     min-height: 100%;
     background-color: #204d74;
     padding-left: 15px;
-    /*color: white;*/
     position: absolute;
     top: 0;
     bottom: 0;

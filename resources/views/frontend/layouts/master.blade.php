@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="_token" content="{{ csrf_token() }}" />
 
         <title>@yield('title', 'В каждый дом | Рекламная газета | Бесплатная газета | Реклама в Витебске')</title>
@@ -25,6 +25,16 @@
     </head>
 
     <body>
+        <!--[if lte IE 9]>
+            <div style="text-align:center;background:#900;padding:10px;">
+                <h3 style="color:#ffffff;margin:0;padding:0;">
+                    Ваш браузер Internet Explorer УСТАРЕЛ! Поэтому сайт может отображаться неправильно.
+                </h3>
+                <p style="margin:10px 0 0 0; padding:0; color:#fff">
+                    Обновлять Internet Explorer, воспользоваться другим браузером или оставить все как есть - Ваш выбор.
+                </p>
+            </div>
+        <![endif]-->
         @include('frontend.includes.yandexmetrika')
         <div class="wrapper">
             <div class="header">

@@ -17,7 +17,7 @@ Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
  * Namespaces indicate folder structure
  */
 
-Route::group(['namespace' => 'Frontend\Auth'], function () {
+Route::group(['namespace' => 'Frontend\Auth', 'middleware' => ['Locale']],  function () {
     Route::get('admin/login', ['as' => 'login', 'uses' => 'LoginController@showLoginForm']);
     Route::post('admin/login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
 
@@ -27,7 +27,7 @@ Route::group(['namespace' => 'Frontend\Auth'], function () {
     Route::post('password/reset', ['as' => 'password.reset.post', 'uses' => 'ResetPasswordController@reset']);
 });
 
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth', 'middleware' => 'Locale'], function () {
     /*
      * These routes need view-backend permission
      * (good if you want to allow more than one group in the backend,
@@ -35,6 +35,8 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', '
      *
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
      */
-    require (__DIR__.'/Backend/Backend.php');
+	//Route::group(['middleware' => 'Locale'], function () {
+		require (__DIR__.'/Backend/Backend.php');
+	//});
 
 });

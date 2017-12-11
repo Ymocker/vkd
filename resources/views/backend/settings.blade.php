@@ -53,53 +53,53 @@
 @endsection
 
 @section('content')
-<h3 class="box-title">Настройки <small>(Внимание! Неправильные настройки могут привести к потере данных и неработоспособности сайта)</small></h3>
+<h3 class="box-title">{{ trans('bsett.sett') }} <small>({{ trans('bsett.atten') }})</small></h3>
 
     {!! Form::open(['url' => 'admin/settings', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
         <div class="form-group form-group-lg">
             <div class="col-sm-3">
-                {!! Form::label('currnom', 'Текущий номер') !!}
+                {!! Form::label('currnom', trans('bsett.curr')) !!}
                 {!! Form::input('number', 'currnom', $sett->currnom, ['class' => 'form-control', 'required' => true,
                 'min' => 1, 'max' => 100000]) !!}
             </div>
             <div class="col-sm-3">
-                {!! Form::label('newnom', 'Новый номер') !!}
+                {!! Form::label('newnom', trans('bsett.new')) !!}
                 {!! Form::input('number', 'newnom', $sett->newnom, ['class' => 'form-control', 'required' => true,
                     'min' => 1, 'max' => 100000]) !!}
             </div>
         </div>
         <div class="form-group form-group-lg">
             <div class="col-sm-3">
-                {!! Form::label('kolvo', 'Количество номеров') !!}
+                {!! Form::label('kolvo', trans('bsett.qnt')) !!}
                 {!! Form::input('number', 'kolvo', $sett->kolvo, ['class' => 'form-control', 'required' => true,
                     'min' => 1, 'max' => 50]) !!}
             </div>
             <div class="col-sm-3">
-                {!! Form::label('ksdelimiter', 'Разделитель для ключевых слов') !!}
+                {!! Form::label('ksdelimiter', trans('bsett.divide')) !!}
                 {!! Form::input('text', 'ksdelimiter', $sett->ksdelimiter, ['class' => 'form-control', 'required' => true,
                     'pattern' => '\D']) !!}
             </div>
             <div class="col-sm-3">
-                {!! Form::label('smallpic', 'Размер для миниатюр (px)') !!}
+                {!! Form::label('smallpic', trans('bsett.img') . ' (px)') !!}
                 {!! Form::input('number', 'smallpic', $sett->smallpic, ['class' => 'form-control', 'required' => true,
                     'min' => 100, 'max' => 500]) !!}
             </div>
         </div>
         <div class="form-group form-group-lg">
             <div class="col-sm-12">
-                {!! Form::label('actia', 'Текст акции /// для отмены акции удалите все символы из данного поля') !!}
+                {!! Form::label('actia', trans('bsett.act')) !!}
                 {!! Form::input('text', 'actia', $sett->actia, ['class' => 'form-control', 'max' => 125]) !!}
             </div>
         </div>
 
-        {!! Form::submit('Сохранить',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit(trans('bsett.save'),['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
 
     <hr>
 
     <div class="form-group form-group-lg">
-        <h4>Редактирование текстовых файлов сайта</h4>
+        <h4>{{ trans('bsett.textedit') }}</h4>
         {{ Form::radio('aboutfile', 'about', false, ['id' => 'about']) }} about.txt<br>
         {{ Form::radio('aboutfile', 'contact', false, ['id' => 'contact']) }} contact.txt<br>
         {{ Form::radio('aboutfile', 'tariff', false, ['id' => 'tariff']) }} tariff.txt<br>
@@ -107,18 +107,18 @@
         <br /><b id="editedfile">&nbsp</b>
         <textarea name="editor" id="editor"></textarea>
         <p>&nbsp;</p>
-        <div id="butAbout" class="btn btn-primary" style="visibility: hidden">Сохранить изменения</div>
+        <div id="butAbout" class="btn btn-primary" style="visibility: hidden">{{ trans('bsett.savetext') }}</div>
     </div>
 
     <p>&nbsp;</p>
     <hr>
 
     <div class="col-sm-6">
-        {!! Form::label('pass', 'Ввод текста для шифрования >>> ') !!}
+        {!! Form::label('pass', trans('bsett.ciphertext') . ' >>> ') !!}
         {!! Form::text('pass', '', ['class' => 'form-control', 'size' => 50, 'maxlength' => 20]) !!}
         <br />
-        <div id="butCipher" class="btn btn-primary">Получить шифр</div>
-        <h4 id="cipher">Cipher</h4>
+        <div id="butCipher" class="btn btn-primary">{{ trans('bsett.getcipher') }}</div>
+        <h4 id="cipher">{{ trans('bsett.cipher') }}</h4>
     </div>
 
 @endsection

@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 		'verifyTop' => \App\Http\Middleware\VerifyTop::class,
         'adminData' => \App\Http\Middleware\AdminData::class,
+		'Locale' => \App\Http\Middleware\Locale::class,
     ];
 }

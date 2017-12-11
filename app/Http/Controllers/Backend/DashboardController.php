@@ -12,6 +12,7 @@ use App\Models\Nomer;
 use App\Models\Settings;
 
 use Cache;
+use Config;
 
 
 /**
@@ -87,11 +88,11 @@ class DashboardController extends Controller
         $results = Settings::find(1);
 
         if ($num == $results->currnom) {
-            $status = 'Текущий';
+            $status = (Config::get('app.locale') == 'ru') ? 'Текущий' : 'Current';
         } elseif ($num > $results->currnom) {
-            $status = 'Новый';
+            $status = (Config::get('app.locale') == 'ru') ? 'Новый' : 'New';
         } else {
-            $status = 'Архивный';
+            $status = (Config::get('app.locale') == 'ru') ? 'Архивный' : 'Archive';
         }
 
         Session::put(['statusNumber' => $status, 'editNumber' => $num]);

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Панель управления сайтом</title>
+        <title>{{ trans('bmaster.title') }}</title>
 
         <!-- Meta -->
         <meta name="description" content="@yield('meta_description', 'Default Description')">
@@ -29,7 +29,15 @@
     </head>
 
     <body>
-        <div class="header">Панель управления сайтом «В каждый дом»</div>
+        <div class="header form-group-lg">
+            <div class="col-sm-11">
+                {{ trans('bmaster.head') }}
+            </div>
+            <div class="loc col-sm-1">
+                <a href="/admin/setlocale/ru">Ru</a>
+                <a href="/admin/setlocale/en">En</a>
+            </div>
+        </div>
         <div class="wrapper">
 
             <div id="sidemenu">
@@ -40,7 +48,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="status">
                     <h3 class="box-title">
-                        Редактируемый номер: <b><span id="ed-number">{{ $admData['editNumber'] }}</span></b> (<span id="status-number">{{ $admData['statusNumber'] }}</span>)
+                        {{ trans('bmaster.editing') }}: <b><span id="ed-number">{{ $admData['editNumber'] }}</span></b> (<span id="status-number">{{ $admData['statusNumber'] }}</span>)
                     </h3>
                 </section>
 
@@ -51,7 +59,7 @@
             </div>
 
         </div> {{-- end wrapper --}}
-        <div class="footer">«В каждый дом»</div>
+        <div class="footer">{{ trans('bmaster.footer') }}</div>
 
         <!-- JavaScripts -->
         @yield('before-scripts')

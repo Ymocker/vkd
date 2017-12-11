@@ -34,17 +34,17 @@
 @endsection
 
 @section('content')
-    <h3 class="box-title">Файл текстовых объявлений.</h3>
+    <h3 class="box-title">{{ trans('btxtdel.filetxt') }}.</h3>
 
     {!! Form::open(['url' => 'admin/addtext', 'class' => 'form-horizontal', 'role' => 'form', 'files'=>'true']) !!}
         <div class="form-group form-group-lg">
             <div class="col-sm-4">
-                {!! Form::label('name', 'Файл') !!}
+                {!! Form::label('name', trans('btxtdel.file')) !!}
                 {!! Form::file('file_name') !!}
             </div>
         </div>
 
-        {!! Form::submit('Загрузить новый файл',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit(trans('btxtdel.up') ,['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
 
     @if ($txtFile === '')
@@ -52,6 +52,6 @@
     @else
         <textarea name="editor" id="editor">{!! $txtFile !!}</textarea>
     @endif
-    <div id="butSave" class="btn btn-warning" style="visibility: hidden">Сохранить изменения</div>
+    <div id="butSave" class="btn btn-warning" style="visibility: hidden">{{ trans('btxtdel.save') }}</div>
 
 @endsection
