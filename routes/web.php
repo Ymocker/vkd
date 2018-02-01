@@ -5,7 +5,7 @@
  * Namespaces indicate folder structure
  */
 
-Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
+Route::group(['namespace' => 'Frontend', 'as' => 'frontend.', 'middleware' => 'Visitors'], function () {
     require __DIR__.'/Frontend/Frontend.php';
     require __DIR__.'/Frontend/Access.php';
 });

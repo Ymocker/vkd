@@ -10,6 +10,7 @@ use App\Models\Reklama;
 use App\Models\Nomer;
 use App\Models\Settings;
 use App\Models\Kword;
+use App\Models\Page;
 
 use Mail;
 use Cache;
@@ -30,23 +31,30 @@ class FrontendController extends Controller
         switch ($p) {
             case '0':
                 $section = 'Реклама&nbsp;на&nbsp;сайте';
+                $page = 6;
                 break;
             case '2':
                 $section = 'Реклама&nbsp;на&nbsp;внутренних&nbsp;полосах';
+                $page = 3;
                 break;
             case '4':
                 $section = 'Реклама&nbsp;на&nbsp;последней&nbsp;полосе';
+                $page = 4;
                 break;
             case '5':
                 $section = 'Текстовая&nbsp;реклама';
+                $page = 5;
                 break;
             case 'search':
                 $section = 'Поиск&nbsp;рекламы';
+                $page = 7;
                 break;
             default:
                 $section = 'Реклама&nbsp;на&nbsp;первой&nbsp;полосе';
                 $p = '1';
+                $page = 2;
         }
+        Page::InkrPage($page);
 
         $sett = Settings::find(1);
         $width = $sett->smallpic; //get dimension for thumbnails
@@ -120,6 +128,7 @@ class FrontendController extends Controller
      */
     public function getAd($id = '')
     {
+        Page::InkrPage(8);
         if ($id === '')
             {return redirect('/');}
 
@@ -135,6 +144,7 @@ class FrontendController extends Controller
      */
     public function changeNum($num)
     {
+        Page::InkrPage(12);
         $nomer = Nomer::findOrFail($num);
 
         Session::put(['numberId' => $num, 'numberGod' => $nomer->nomgod,
@@ -151,15 +161,19 @@ class FrontendController extends Controller
             case 'contact':
                 $data = file_get_contents(public_path() . '/textrek/contact.txt');
                 $backform = true;
+                $page = 10;
                 break;
             case 'tariff':
                 $data = file_get_contents(public_path() . '/textrek/tariff.txt');
                 $backform = false;
+                $page = 11;
                 break;
             default:
                 $data = file_get_contents(public_path() . '/textrek/about.txt');
                 $backform = false;
+                $page = 9;
         }
+        Page::InkrPage($page);
         return view('frontend.about', ['data' => $data, 'backform' => $backform]);
     }
 
@@ -168,6 +182,7 @@ class FrontendController extends Controller
      * @return search results with index view
      */
     public function searchResult($kwId) {
+        Page::InkrPage(13);
         $sett = Settings::find(1);
 
         $curNomId = Nomer::where('nomgaz', $sett->currnom)->first()->id;
@@ -210,6 +225,7 @@ class FrontendController extends Controller
                     ->subject('Заказ обратного звонка(сообщения) с сайта')
                     ->from('post@vkd.by', 'Post robot');
         });
+        Page::InkrPage(14);
 
         return 'Сообщение отправлено';
     }

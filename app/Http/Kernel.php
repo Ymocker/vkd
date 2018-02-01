@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
 		'verifyTop' => \App\Http\Middleware\VerifyTop::class,
         'adminData' => \App\Http\Middleware\AdminData::class,
 		'Locale' => \App\Http\Middleware\Locale::class,
+		'Visitors' => \App\Http\Middleware\Visitors::class,
     ];
 }
