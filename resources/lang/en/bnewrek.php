@@ -15,7 +15,7 @@ return [
     'namedoc' => 'Name of the document with extension. i.e. article.pdf',
     'othersize' => 'Other size',
     'page' => 'Page',
-    'page23' => 'At the site only',
+    'page0' => 'At the site only',
     'page1' => 'First',
     'page23' => 'Inner',
     'page4' => 'Fourth',

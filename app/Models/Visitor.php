@@ -18,31 +18,37 @@ class Visitor extends Model
 
     public static function Check($request) {
 
-        $agent = $request->header('User-Agent');
-        $ref = request()->headers->get('referer');
+        $agent = substr($request->header('User-Agent'), 0, 254);
+        $ref = substr(request()->headers->get('referer'), 0, 60);
         $old_visitor = self::where('ip', ip2long($request->ip()))->first();
 
         if ($old_visitor == null) {
             $newVis = new self;
             $newVis->ip = ip2long($request->ip());
             $newVis->ipAddr = $request->ip();
-            $newVis->ref = request()->headers->get('referer');
-            $newVis->agent = $request->header('User-Agent');
+            $newVis->ref = $ref;
+            $newVis->agent = $agent;
             $newVis->visit_date = time();
             $newVis->save();
 
-            Page::InkrPage(1);
-            Ref::AddRef($ref);
+            $botpos = stripos($agent, 'bot');
+            if ($botpos === FALSE) {
+                Page::InkrPage(1); // increment of visitors
+                Ref::AddRef($ref);
+            }
             Agent::AddAgent($agent);
         } else {
-            if (time()-2 > $old_visitor->visit_date) {
-                Page::InkrPage(1);
-                Ref::AddRef($ref);
+            if (time()-28800 > $old_visitor->visit_date) {
+                $botpos = stripos($agent, 'bot');
+                if ($botpos === FALSE) {
+                    Page::InkrPage(1); // increment of visitors
+                    Ref::AddRef($ref);
+                }
                 Agent::AddAgent($agent);
             }
 
-            $old_visitor->ref = request()->headers->get('referer');
-            $old_visitor->agent = $request->header('User-Agent');
+            $old_visitor->ref = $ref;
+            $old_visitor->agent = $agent;
             $old_visitor->visit_date = time();
             $old_visitor->save();
         }
