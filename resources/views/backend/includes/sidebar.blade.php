@@ -44,6 +44,9 @@
 	<li>
 	   <hr>
 	</li>
+        <li class="{{active_class(if_uri(['admin/stat']), 'selected') }}">
+		<a href="{!! url('admin/stat') !!}" title="{{ trans('bside.stat') }}">{{ trans('bside.stat') }}</a>
+	</li>
         <li class="{{active_class(if_uri(['admin/security']), 'selected') }}">
 		<a href="{!! url('admin/security') !!}" title="{{ trans('bside.sec') }}">{{ trans('bside.sec') }}</a>
 	</li>

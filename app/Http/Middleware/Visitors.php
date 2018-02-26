@@ -18,7 +18,11 @@ class Visitors
      */
     public function handle($request, Closure $next)
     {
-        Visitor::Check($request);
         return $next($request);
+    }
+
+    public function terminate($request, $response)
+    {
+       Visitor::Check($request);
     }
 }

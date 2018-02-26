@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Nomer;
 use App\Models\Settings;
@@ -122,6 +123,8 @@ class NomerController extends Controller
                 }
             }
         }
+
+        DB::table('visitors')->truncate();
 
         return redirect('admin/dashboard');
     }

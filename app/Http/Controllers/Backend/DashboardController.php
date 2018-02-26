@@ -207,6 +207,14 @@ class DashboardController extends Controller
         return redirect('admin/dashboard');
     }
 
+    public function showStat() {
+        $page = DB::table('pages')->get();
+        $ref = DB::table('refs')->orderBy('hit', 'desc')->limit(10)->get();
+        $ag = DB::table('agents')->orderBy('hit', 'desc')->limit(20)->get();
+
+        return view('backend.stat', ['pages' => $page, 'refs' => $ref, 'agents' => $ag]);
+    }
+
 } // class DashboardController END
 
 //$start = microtime(true);

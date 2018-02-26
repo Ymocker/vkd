@@ -41,4 +41,5 @@ Route::group(['middleware' => 'adminData'], function () {
     Route::get('addtext', 'DashboardController@showTextForm')->name('showtext');
     Route::get('settings', 'DashboardController@showSettings')->name('settings');
     Route::get('security', 'DashboardController@showSecure')->name('security');
+    Route::get('stat', 'DashboardController@showStat')->name('security');
 });

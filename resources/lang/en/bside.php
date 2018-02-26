@@ -17,6 +17,7 @@ return [
     'sec' => 'Security',
     'sett' => 'Settings',
     'site' => 'from the site',
+    'stat' => 'Statistics',
     'text' => 'Text file',
     'titleadd' => 'Add',
     'titlearch' => 'Archive',

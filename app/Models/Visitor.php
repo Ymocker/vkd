@@ -17,10 +17,13 @@ class Visitor extends Model
     ];
 
     public static function Check($request) {
-
         $agent = substr($request->header('User-Agent'), 0, 254);
         $ref = substr(request()->headers->get('referer'), 0, 60);
-        $old_visitor = self::where('ip', ip2long($request->ip()))->first();
+
+        $old_visitor = self::
+                where('ip', ip2long($request->ip()))
+                ->where('visit_date', '>', time() - 28800)
+                ->first();
 
         if ($old_visitor == null) {
             $newVis = new self;
@@ -34,23 +37,13 @@ class Visitor extends Model
             $botpos = stripos($agent, 'bot');
             if ($botpos === FALSE) {
                 Page::InkrPage(1); // increment of visitors
+            }
+            $refvkd = stripos($ref, 'vkd.by');
+            if ($refvkd === FALSE) {
                 Ref::AddRef($ref);
             }
-            Agent::AddAgent($agent);
-        } else {
-            if (time()-28800 > $old_visitor->visit_date) {
-                $botpos = stripos($agent, 'bot');
-                if ($botpos === FALSE) {
-                    Page::InkrPage(1); // increment of visitors
-                    Ref::AddRef($ref);
-                }
-                Agent::AddAgent($agent);
-            }
 
-            $old_visitor->ref = $ref;
-            $old_visitor->agent = $agent;
-            $old_visitor->visit_date = time();
-            $old_visitor->save();
+            Agent::AddAgent($agent);
         }
     }
 }
